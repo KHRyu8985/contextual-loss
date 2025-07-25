@@ -2,17 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Do not make additional function or code without any permission. Try to avoid making new .py file or folders! this is essential
+
+**CRITICAL: ALL EXECUTABLE CODE MUST BE PLACED IN THE `/scripts/` FOLDER**
+- Never create .py files in the root directory or any other location
+- All test files, example scripts, and executable code belong in `/scripts/`
+- If you need to create executable code, it MUST go in `/scripts/` folder only
+
 ## Project Overview
 
-This is a **3D Contextual Loss for Medical Images** project implementing contextual loss functions optimized for 3D medical imaging data (CT, MRI, etc.). The project combines custom 3D contextual loss implementations with multiple feature extraction backends including SwinViT, anatomix, and ResNet models.
+This is a **3D Contextual Loss for Medical Images** project implementing contextual loss functions optimized for 3D medical imaging data (CT, MRI, etc.). The project combines custom 3D contextual loss implementations with multiple feature extraction backends including SwinViTㅊ, anatomix, and ResNet models.
 
 ## Core Architecture
 
 ### Feature Extraction Backends
 - **SwinViT**: Uses SwinUNETR-based 3D vision transformers with multi-level feature extraction (levels 0, 1, 2)
-- **anatomix**: General-purpose 3D biomedical feature extractor (ICLR'25 paper) with brain-specific variants
-- **ResNet**: Traditional CNN-based feature extraction with multiple depth variants
-- **Autoencoder**: Variational autoencoder implementation for unsupervised feature learning
+feature learning
 
 ### Contextual Loss Variants
 - **Base 3D Contextual Loss** (`ctx_loss.py`): Full volume computation for smaller datasets
@@ -21,8 +26,12 @@ This is a **3D Contextual Loss for Medical Images** project implementing context
 
 ### Key Components
 - `/src/`: Core implementation modules
-- `/weights/`: Pre-trained model weights (SwinViT, anatomix, ResNet, autoencoder, segmentation models)
+- `/data/`: Dataset saving
+- `/results/`: saving results when running the code
+- `/weights/`: Pre-trained model weights (SwinViT)
 - `/scripts/`: Testing and validation scripts with GPU memory monitoring
+
+- please do not make additional folder and do not make python code outside.
 
 ## Development Commands
 

@@ -10,17 +10,19 @@ from monai.transforms import (
     SaveImaged,
     RandSpatialCropd
 )
-from src.feature_extractor.swinvit_feature_extractor import SwinViTFeatureExtractor
+from src.feature_extractor.swinvit_feature_extractor import SwinExtractor
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    extractor = SwinViTFeatureExtractor(
-        pretrained_weight_path='weights/model_swinvit.pt'
-    )
+    
+    # Load from pretrained model
+    extractor = SwinExtractor.from_pretrained('weights/swin')
+    print("✅ Loaded from pretrained model: weights/swin")
+    
     extractor.to(device)
 
     # 실제 CT 파일 경로
-    ct_path = "2ABA002/ct.nii"
+    ct_path = "data/unit_test/2ABA002/ct.nii"
 
     # MONAI transform으로 전처리
     val_transforms = Compose(
