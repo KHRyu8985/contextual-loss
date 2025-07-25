@@ -11,11 +11,57 @@
 
 ## 설치
 
+### Requirements
+
+- Python >= 3.12
+- CUDA 지원 GPU (권장)
+
+### UV를 사용한 설치 (권장)
+
 ```bash
+# UV 설치 (아직 설치하지 않은 경우)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 프로젝트 클론
+git clone <repository-url>
+cd contextual-loss
+
+# 의존성 설치 및 가상환경 생성
+uv sync
+
+# 개발 의존성까지 모두 설치
+uv sync --all-extras
+```
+
+### Pip를 사용한 설치
+
+```bash
+# 프로젝트 클론
+git clone <repository-url>
+cd contextual-loss
+
+# 가상환경 생성 및 활성화
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# 또는 .venv\Scripts\activate  # Windows
+
 # 의존성 설치
-pip install torch torchvision
-pip install monai
-pip install autorootcwd
+pip install -e .
+
+# 개발 의존성 설치 (선택사항)
+pip install -e ".[dev]"
+```
+
+### 다른 사용자를 위한 재현 가능한 설치
+
+이 프로젝트는 `uv.lock` 파일을 포함하고 있어 정확히 동일한 패키지 버전으로 설치할 수 있습니다:
+
+```bash
+# UV로 정확한 버전 재현
+uv sync --locked
+
+# 또는 pip를 사용하여 lock 파일 기반 설치
+pip install -r <(uv export --format requirements-txt)
 ```
 
 ## 사용법
