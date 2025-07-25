@@ -1,5 +1,5 @@
 # Large model files - will be managed with DVC later
-weights/
+weights/*
 *.pth
 *.pt
 *.nii
